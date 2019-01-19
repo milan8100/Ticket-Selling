@@ -92,7 +92,7 @@ input[type="button"],
 input[type="submit"],
 a.button,
 a.button.border:hover,
-table.basic-table th,
+
 .plan.featured .plan-price,
 mark.color,
 .style-4 .tabs-nav li.active a,
@@ -114,7 +114,9 @@ input:checked + .slider,
 #small-dialog .mfp-close:hover {
     background-color: #f91942;
 }
-
+table.basic-table th{
+    background-color: #b6fbb8;
+}
 
 .rangeslider__fill,
 span.blog-item-tag ,

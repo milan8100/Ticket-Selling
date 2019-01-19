@@ -1,26 +1,28 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\UsersSearch */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $model common\models\Movies */
+
+$this->title = 'Create Movies';
+$this->params['breadcrumbs'][] = ['label' => 'Movies', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="dashboard">
-	================================================== -->
+	
         <!-- Responsive Navigation Trigger -->
-	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Movies Navigation</a>
         <div class="dashboard-nav">
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
-                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i> 
-                              <?php
-                    
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i>  <?php
+
 $rows = (new \yii\db\Query())
-->select(['menuname'])
-->from('menus')
-->all();
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
     if($menuname == 'Dashboard')
@@ -28,9 +30,7 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?> 
- 
-                        </a></li>
+?></a></li>
                         <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i> <?php
 
 $rows = (new \yii\db\Query())
@@ -47,7 +47,7 @@ foreach ($rows as $row) {
 }
 ?>
 </a></li>
-                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i>  <?php
+                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i><?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -61,9 +61,9 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?></a></li>
-		
-            <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+?> </a></li>
+                        
+                    <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -77,8 +77,8 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?></a></li>            
-                </ul>
+?></a></li>             
+ 		</ul>
 			
 		<ul data-submenu-title="Listings">
                     <li><a><i class="sl sl-icon-layers"></i> Events Managment</a>
@@ -100,60 +100,33 @@ foreach ($rows as $row) {
             </div>
 	</div>
  <div class="dashboard-content">
+      
+
+    <div class="user-create">
+        <div id="titlebar">
+                    <div class="row">
+			<div class="col-md-12">
+                            <h1>Add Movies</h1>
+				<!-- Breadcr    umbs -->
+				<nav id="breadcrumbs">
+                                    <ul>
+					<li><a href="#">Movies Management</a></li>
+                                            <li>Add Movies</li>
+                                    </ul>
+				</nav>
+			</div>
+                    </div>
+        </div>
 
 
-<div class="user-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+<div class="movies-create">
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'first_name') ?>
-
-    <?= $form->field($model, 'last_name') ?>
-
-    <?= $form->field($model, 'email') ?>
-
-    <?= $form->field($model, 'password') ?>
-
-    <?php // echo $form->field($model, 'zipcode') ?>
-
-    <?php // echo $form->field($model, 'country') ?>
-
-    <?php // echo $form->field($model, 'comp_name') ?>
-
-    <?php // echo $form->field($model, 'phno') ?>
-
-    <?php // echo $form->field($model, 'comp_email') ?>
-
-    <?php // echo $form->field($model, 'address') ?>
-
-    <?php // echo $form->field($model, 'city') ?>
-
-    <?php // echo $form->field($model, 'state') ?>
-
-    <?php // echo $form->field($model, 'logo') ?>
-
-    <?php // echo $form->field($model, 'is_active') ?>
-
-    <?php // echo $form->field($model, 'create_at') ?>
-
-    <?php // echo $form->field($model, 'update_at') ?>
-
-    <?php // echo $form->field($model, 'username') ?>
-
-    <?php // echo $form->field($model, 'authKey') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'button border margin-top-10']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'button border margin-top-10']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
 
 </div>
- </div>
+    </div>
+     </div>
 </div>

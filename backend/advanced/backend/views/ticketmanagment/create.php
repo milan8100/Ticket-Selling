@@ -1,11 +1,11 @@
 <?php
-use yii\helpers\Html;
-use yii\grid\GridView;
-/* @var $this yii\web\View */
-/* @var $model common\models\User */
 
-$this->title = 'Create Users';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+use yii\helpers\Html;
+
+/* @var $this yii\web\View */
+/* @var $model common\models\TicketManagment */
+
+$this->params['breadcrumbs'][] = ['label' => 'Ticket Managments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="dashboard">
@@ -15,24 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="dashboard-nav">
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
-                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i> 
-                              <?php
-                    
-$rows = (new \yii\db\Query())
-->select(['menuname'])
-->from('menus')
-->all();
-foreach ($rows as $row) {
-    $menuname = $row['menuname'];
-    if($menuname == 'Dashboard')
-    {
-        echo " $menuname<br /><br />";
-    }
-}
-?> 
- 
-                        </a></li>
-                        <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i><?php
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -48,8 +32,7 @@ foreach ($rows as $row) {
 }
 ?>
 </a></li>
-                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i> 		
-                <?php
+                        <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i><?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -63,11 +46,8 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-
-?>
-</a></li>
-
-   <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+?> </a></li>
+                           <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -82,7 +62,7 @@ foreach ($rows as $row) {
     }
 }
 ?></a></li>      
-                </ul>
+ 		</ul>
 			
 		<ul data-submenu-title="Listings">
                     <li><a><i class="sl sl-icon-layers"></i> Events Managment</a>
@@ -110,21 +90,28 @@ foreach ($rows as $row) {
         <div id="titlebar">
                     <div class="row">
 			<div class="col-md-12">
-                            <h1>Create User</h1>
+                            <h1>Add Tickets</h1>
 				<!-- Breadcr    umbs -->
 				<nav id="breadcrumbs">
                                     <ul>
-					<li><a href="#">User Managment</a></li>
-                                            <li>Create User</li>
+					<li><a href="#">Ticket Managment</a></li>
+                                            <li>Add Tickets</li>
                                     </ul>
 				</nav>
 			</div>
                     </div>
         </div>
 
+
+<div class="ticket-managment-create">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
+</div>
 </div>
 
 												

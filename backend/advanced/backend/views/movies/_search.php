@@ -4,23 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\UsersSearch */
+/* @var $model common\models\MoviesSearch */
 /* @var $form yii\widgets\ActiveForm */
-?>
-<div class="dashboard">
-	================================================== -->
+?><div class="dashboard">
+	
         <!-- Responsive Navigation Trigger -->
-	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Movies Navigation</a>
         <div class="dashboard-nav">
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
-                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i> 
-                              <?php
-                    
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i> <?php
+
 $rows = (new \yii\db\Query())
-->select(['menuname'])
-->from('menus')
-->all();
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
     if($menuname == 'Dashboard')
@@ -28,10 +27,8 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?> 
- 
-                        </a></li>
-                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i> <?php
+?></a></li>
+                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i><?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -46,8 +43,9 @@ foreach ($rows as $row) {
     }
 }
 ?>
-</a></li>
-                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i>  <?php
+ </a></li>
+                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketManagement/"><i class="fa fa-calendar-check-o"></i> Ticket-Bookings</a></li>
+<?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -61,9 +59,8 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?></a></li>
-		
-            <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+?>
+                    <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -77,8 +74,8 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?></a></li>            
-                </ul>
+?></a></li>             
+		</ul>
 			
 		<ul data-submenu-title="Listings">
                     <li><a><i class="sl sl-icon-layers"></i> Events Managment</a>
@@ -102,7 +99,8 @@ foreach ($rows as $row) {
  <div class="dashboard-content">
 
 
-<div class="user-search">
+
+<div class="movies-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -111,41 +109,35 @@ foreach ($rows as $row) {
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'first_name') ?>
+    <?= $form->field($model, 'ticket_id') ?>
 
-    <?= $form->field($model, 'last_name') ?>
+    <?= $form->field($model, 'artist_id') ?>
 
-    <?= $form->field($model, 'email') ?>
+    <?= $form->field($model, 'category_id') ?>
 
-    <?= $form->field($model, 'password') ?>
+    <?= $form->field($model, 'language_id') ?>
 
-    <?php // echo $form->field($model, 'zipcode') ?>
+    <?php // echo $form->field($model, 'location_id') ?>
 
-    <?php // echo $form->field($model, 'country') ?>
+    <?php // echo $form->field($model, 'mv_pic') ?>
 
-    <?php // echo $form->field($model, 'comp_name') ?>
+    <?php // echo $form->field($model, 'mv_category') ?>
 
-    <?php // echo $form->field($model, 'phno') ?>
+    <?php // echo $form->field($model, 'mv_name') ?>
 
-    <?php // echo $form->field($model, 'comp_email') ?>
+    <?php // echo $form->field($model, 'mv_art_name') ?>
 
-    <?php // echo $form->field($model, 'address') ?>
+    <?php // echo $form->field($model, 'mv_ticket') ?>
 
-    <?php // echo $form->field($model, 'city') ?>
+    <?php // echo $form->field($model, 'mv_language') ?>
 
-    <?php // echo $form->field($model, 'state') ?>
-
-    <?php // echo $form->field($model, 'logo') ?>
+    <?php // echo $form->field($model, 'mv_location') ?>
 
     <?php // echo $form->field($model, 'is_active') ?>
 
     <?php // echo $form->field($model, 'create_at') ?>
 
     <?php // echo $form->field($model, 'update_at') ?>
-
-    <?php // echo $form->field($model, 'username') ?>
-
-    <?php // echo $form->field($model, 'authKey') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'button border margin-top-10']) ?>
@@ -155,5 +147,7 @@ foreach ($rows as $row) {
     <?php ActiveForm::end(); ?>
 
 </div>
- </div>
+
 </div>
+ </div>
+

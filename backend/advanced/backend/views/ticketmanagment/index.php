@@ -1,26 +1,32 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\UsersSearch */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $searchModel common\models\TicketSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
 ?>
-<div class="dashboard">
+
+ <div id="dashboard">
+     
+               <!-- Navigation
 	================================================== -->
         <!-- Responsive Navigation Trigger -->
 	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
         <div class="dashboard-nav">
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
-                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i> 
-                              <?php
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i>  
                     
+<?php
+
 $rows = (new \yii\db\Query())
-->select(['menuname'])
-->from('menus')
-->all();
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
     if($menuname == 'Dashboard')
@@ -28,9 +34,9 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?> 
+?>
+ </a></li>
  
-                        </a></li>
                         <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i> <?php
 
 $rows = (new \yii\db\Query())
@@ -47,7 +53,8 @@ foreach ($rows as $row) {
 }
 ?>
 </a></li>
-                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i>  <?php
+                        <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i>                       
+                            <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -62,8 +69,8 @@ foreach ($rows as $row) {
     }
 }
 ?></a></li>
-		
-            <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+     
+   <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -77,7 +84,7 @@ foreach ($rows as $row) {
         echo " $menuname<br /><br />";
     }
 }
-?></a></li>            
+?></a></li>      
                 </ul>
 			
 		<ul data-submenu-title="Listings">
@@ -99,61 +106,82 @@ foreach ($rows as $row) {
 			
             </div>
 	</div>
- <div class="dashboard-content">
+	<!-- Navigation / End -->
+        
+   <div class="dashboard-content">
+       <div id="titlebar">
+                 <div class="row">      
+			<div class="col-md-12">
+                            <h1>Ticket Managment</h1>
+				<!-- Breadcr    umbs -->
+				<nav id="breadcrumbs">
+                                    <ul>
+					<li><a href="#">Ticket Managment</a></li>
+                                            <li>Ticket</li>
+                                            
+                                    </ul>
+				</nav>
+			</div>
+                    
+		</div>
+       </div>
+       <div class="row">
+			
+			<!-- Listings -->
+			<div class="col-lg-12 col-md-12">
+				<div class="dashboard-list-box margin-top-0">
+				
+                        
+					<ul>
 
+                                            <li>
 
-<div class="user-search">
+<div class="ticket-managment-index">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
+     
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Add Ticket', ['create'], ['class' => 'button border margin-top-10']) ?>
+    </p>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            
+
+            //'id',
+            //'user_id',
+            //'movie_id',
+            'ticket_id',
+            //'no_ticket',
+            //'movie_name',
+            //'payment_id',
+            'is_active',
+            'create_at',
+            'update_at',
+            //'authKey',
+
+            ['class' => 'yii\grid\ActionColumn', 'header'=> 'Actions'],
+        ],
     ]); ?>
+						</li>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'first_name') ?>
-
-    <?= $form->field($model, 'last_name') ?>
-
-    <?= $form->field($model, 'email') ?>
-
-    <?= $form->field($model, 'password') ?>
-
-    <?php // echo $form->field($model, 'zipcode') ?>
-
-    <?php // echo $form->field($model, 'country') ?>
-
-    <?php // echo $form->field($model, 'comp_name') ?>
-
-    <?php // echo $form->field($model, 'phno') ?>
-
-    <?php // echo $form->field($model, 'comp_email') ?>
-
-    <?php // echo $form->field($model, 'address') ?>
-
-    <?php // echo $form->field($model, 'city') ?>
-
-    <?php // echo $form->field($model, 'state') ?>
-
-    <?php // echo $form->field($model, 'logo') ?>
-
-    <?php // echo $form->field($model, 'is_active') ?>
-
-    <?php // echo $form->field($model, 'create_at') ?>
-
-    <?php // echo $form->field($model, 'update_at') ?>
-
-    <?php // echo $form->field($model, 'username') ?>
-
-    <?php // echo $form->field($model, 'authKey') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'button border margin-top-10']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'button border margin-top-10']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
+					</ul>
 </div>
- </div>
-</div>
+                                                </div>
+
+												
+					
+				
+
+
+
+				</div>
+                        
+		
+
+   </div>
+   </div>
+ 

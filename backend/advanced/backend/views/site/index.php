@@ -1,4 +1,10 @@
-
+<?php use common\models\Menus; 
+      use common\models\Ticket;
+      use common\models\TicketManagment;
+      use common\models\Movies;
+      
+      
+?>
 <!-- Header Container
 ================================================== -->
 
@@ -13,9 +19,72 @@
         <div class="dashboard-nav">
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
-                    <li class="active"><a href=""><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i> User Managment</a></li>
-                        <li><a href=""><i class="fa fa-calendar-check-o"></i> Ticket-Bookings</a></li>
+                    <li class="active"><a href=""><i class="sl sl-icon-settings"></i> <?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Dashboard')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?>
+</a></li>
+                        <li><a href="<?= Yii::$app->request->baseUrl; ?>/users/"><i class="sl sl-icon-user"></i> 
+<?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'User Managment')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?>
+                            
+                            </a></li>
+<li><a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/"><i class="fa fa-calendar-check-o"></i>
+<?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Ticket Managment')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?>
+  </a></li>
+  <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Movies Managment')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>             
 		</ul>
 			
 		<ul data-submenu-title="Listings">
@@ -45,8 +114,8 @@
 		<div id="titlebar">
                     <div class="row">   
 			<div class="col-md-12">
-                            <h2>Howdy, Tom!</h2>
-				<!-- Breadcr    umbs -->
+                            <h2>Hellow, <?= Yii::$app->user->identity->first_name ?> </h2>
+				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
                                     <ul>
 					<li><a href="#">Home</a></li>
@@ -207,7 +276,7 @@
 
 			<!-- Copyrights -->
 			<div class="col-md-12">
-				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+				<div class="copyrights">© 2019 Ticket Selling Market Place. All Rights Reserved.</div>
 			</div>
                     </div>
 

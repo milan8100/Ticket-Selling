@@ -41,8 +41,8 @@ AppAsset::register($this);
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="<?= Yii::$app->request->baseUrl; ?>/site/"><img src="<?= Yii::$app->request->baseUrl; ?>/images/logo.png" alt=""></a>
-					<a href="<?= Yii::$app->request->baseUrl; ?>/site/" class="dashboard-logo"><img src="<?= Yii::$app->request->baseUrl; ?>/images/logo2.png" alt=""></a>
+					<a href="<?= Yii::$app->request->baseUrl; ?>/site/"><img src="<?= Yii::$app->request->baseUrl; ?>/images/leo.png" alt=""></a>
+					<a href="<?= Yii::$app->request->baseUrl; ?>/site/" class="dashboard-logo"><img src="<?= Yii::$app->request->baseUrl; ?>/images/leo.png" alt=""></a>
 				</div>
 
 				<!-- Mobile Navigation -->
@@ -63,10 +63,10 @@ AppAsset::register($this);
 				<div class="header-widget">
 					
 					<!-- User Menu -->
-					<div class="user-menu">
+                                        <div class="user-menu">
                                             <div class="user-name"><?php echo isset(Yii::$app->user->identity->username) ? Yii::$app->user->identity->username : 'Guest'; ?></div>
 					
-                                              <?php 
+    <?php 
     NavBar::begin([
         
         'options' => [
@@ -111,12 +111,11 @@ AppAsset::register($this);
 	<!-- Header / End -->
 
 </header>
-<div class="clearfix"></div>
+
+    <div class="clearfix"></div>
 <!-- Header Container / End -->
 
-
-    <!-- Header -->
-
+<!-- Header -->
 
 
 <!--    <div class="container1">-->
@@ -124,6 +123,7 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+
         <?= $content ?>
 <!--    </div>-->
 
@@ -139,6 +139,7 @@ AppAsset::register($this);
 <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/scripts/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/scripts/tooltips.min.js"></script>
 <script type="text/javascript" src="<?= Yii::$app->request->baseUrl; ?>/scripts/custom.js"></script>
+
 <?php $this->endBody() ?>
 </body>
 </html>
