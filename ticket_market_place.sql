@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 14, 2019 at 09:55 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: localhost
+-- Generation Time: Feb 15, 2019 at 05:11 PM
+-- Server version: 10.0.36-MariaDB-0ubuntu0.16.04.1
+-- PHP Version: 7.0.32-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -74,6 +72,20 @@ INSERT INTO `category` (`id`, `artist_id`, `movie_id`, `language_id`, `location_
 (7, 7, 7, 7, 7, 'Romantic'),
 (8, 8, 8, 8, 8, 'Biography'),
 (9, 1, 1, 1, 1, 'Action');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cms_pages`
+--
+
+CREATE TABLE `cms_pages` (
+  `id` int(3) NOT NULL,
+  `name` varchar(15) NOT NULL,
+  `is_active` enum('Active','In_Active','','') NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `update_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -284,6 +296,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cms_pages`
+--
+ALTER TABLE `cms_pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `language`
 --
 ALTER TABLE `language`
@@ -337,49 +355,46 @@ ALTER TABLE `venues`
 --
 ALTER TABLE `artist`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+--
+-- AUTO_INCREMENT for table `cms_pages`
+--
+ALTER TABLE `cms_pages`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `venues`
 --
 ALTER TABLE `venues`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- Constraints for dumped tables
 --
@@ -395,7 +410,6 @@ ALTER TABLE `movies`
 --
 ALTER TABLE `user_role`
   ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
