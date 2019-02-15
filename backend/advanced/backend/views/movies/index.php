@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\MoviesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+$this->title = 'Movies Management';
 ?>
 
  <div id="dashboard">
@@ -45,7 +45,7 @@ $rows = (new \yii\db\Query())
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
-    if($menuname == 'User Managment')
+    if($menuname == 'User Management')
     {
         echo " $menuname<br /><br />";
     }
@@ -62,7 +62,7 @@ $rows = (new \yii\db\Query())
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
-    if($menuname == 'Ticket Managment')
+    if($menuname == 'Ticket Management')
     {
         echo " $menuname<br /><br />";
     }
@@ -70,7 +70,7 @@ foreach ($rows as $row) {
 ?></a></li>
      
 
-                    <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+                    <li class="active"><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-film"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -79,12 +79,82 @@ $rows = (new \yii\db\Query())
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
-    if($menuname == 'Movies Managment')
+    if($menuname == 'Movies Management')
     {
         echo " $menuname<br /><br />";
     }
 }
 ?></a></li>             
+                
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/artist/"><i class="sl sl-icon-user-follow"></i>
+ <?php
+ 
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Artist Management')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>            
+               
+                    
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/category/"><i class="sl sl-icon-doc"></i>
+ <?php
+ 
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Category Management')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>  
+                    
+                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/language/"><i class="sl sl-icon-note"></i> <?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Languages')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>
+                   
+
+               <li><a href="<?= Yii::$app->request->baseUrl; ?>/venues/"><i class="sl sl-icon-location"></i> <?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Venues Management')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>                             
+                    
+                    
                 </ul>
 			
 		<ul data-submenu-title="Listings">
@@ -116,7 +186,7 @@ foreach ($rows as $row) {
 				<!-- Breadcr    umbs -->
 				<nav id="breadcrumbs">
                                     <ul>
-					<li><a href="#">Movies Managment</a></li>
+					<li><a href="#">Movies Management</a></li>
                                             <li>Movies</li>
                                             
                                     </ul>
@@ -149,20 +219,20 @@ foreach ($rows as $row) {
         'filterModel' => $searchModel, 
         'columns' => [
          
-            //'id',
+            'id',
             //'ticket_id',
             //'artist_id',
             //'category_id',
             //'language_id',
             //'location_id',
-            'mv_pic',
+            //'mv_pic',
             'mv_category',
             'mv_name',
             'mv_art_name',
             'mv_ticket',
             'mv_language',
-            //'mv_location',
-            //'is_active',
+            'mv_location',
+            'is_active',
             //'create_at',
             //'update_at',
 
@@ -170,6 +240,8 @@ foreach ($rows as $row) {
         ],
     ]); ?>
 </div>
+                                            </li>
+                                        </ul>
                                                 </div>
                         </div>
        </div>

@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="dashboard">
 	
         <!-- Responsive Navigation Trigger -->
-	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> User Navigation</a>
         <div class="dashboard-nav">
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
@@ -41,7 +41,7 @@ $rows = (new \yii\db\Query())
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
-    if($menuname == 'User Managment')
+    if($menuname == 'User Management')
     {
         echo " $menuname<br /><br />";
     }
@@ -58,7 +58,7 @@ $rows = (new \yii\db\Query())
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
-    if($menuname == 'Ticket Managment')
+    if($menuname == 'Ticket Management')
     {
         echo " $menuname<br /><br />";
     }
@@ -67,7 +67,7 @@ foreach ($rows as $row) {
 ?>
 </a></li>
 
-   <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-doc"></i> <?php
+   <li><a href="<?= Yii::$app->request->baseUrl; ?>/movies/"><i class="sl sl-icon-film"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -76,12 +76,78 @@ $rows = (new \yii\db\Query())
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
-    if($menuname == 'Movies Managment')
+    if($menuname == 'Movies Management')
     {
         echo " $menuname<br /><br />";
     }
 }
-?></a></li>      
+?></a></li>     
+                    <li><a href="<?= Yii::$app->request->baseUrl; ?>/artist/"><i class="sl sl-icon-user-follow"></i>
+ <?php
+ 
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Artist Management')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li> 
+                       <li><a href="<?= Yii::$app->request->baseUrl; ?>/category/"><i class="sl sl-icon-doc"></i>
+ <?php
+ 
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Category Management')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>                          
+                 
+                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/language/"><i class="sl sl-icon-note"></i> <?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Languages')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>
+                       <li><a href="<?= Yii::$app->request->baseUrl; ?>/venues/"><i class="sl sl-icon-location"></i> <?php
+
+$rows = (new \yii\db\Query())
+    ->select(['menuname'])
+    ->from('menus')
+        
+    ->all();
+foreach ($rows as $row) {
+    $menuname = $row['menuname'];
+    if($menuname == 'Venues Management')
+    {
+        echo " $menuname<br /><br />";
+    }
+}
+?></a></li>
+                
+                     
+                     
                 </ul>
 			
 		<ul data-submenu-title="Listings">
@@ -114,7 +180,7 @@ foreach ($rows as $row) {
 				<!-- Breadcr    umbs -->
 				<nav id="breadcrumbs">
                                     <ul>
-					<li><a href="#">User Managment</a></li>
+					<li><a href="#">User Management</a></li>
                                             <li>Create User</li>
                                     </ul>
 				</nav>
