@@ -5,7 +5,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=ticket_market_place',
             'username' => 'root',
-            'password' => '',
+            'password' => 'techmitraa@123',
             'charset' => 'utf8',
         ],
         'mailer' => [
