@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pic')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pic')->fileInput() ?>
 
     <?= $form->field($model, 'is_active')->dropDownList([ 'Active' => 'Active', 'In Active' => 'In Active', ], ['prompt' => '']) ?>
 

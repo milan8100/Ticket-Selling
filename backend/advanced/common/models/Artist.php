@@ -34,12 +34,12 @@ class Artist extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id', 'language_id', 'location_id', 'movie_id', 'name', 'pic', 'is_active', 'update_at'], 'required'],
+            [['category_id', 'language_id', 'location_id', 'movie_id', 'name', 'is_active'], 'required'],
             [['category_id', 'language_id', 'location_id', 'movie_id'], 'integer'],
             [['is_active'], 'string'],
             [['create_at', 'update_at'], 'safe'],
             [['name'], 'string', 'max' => 25],
-            [['pic'], 'string', 'max' => 255],
+            [['pic'],'file','extensions'=>'jpeg,jpg,png,gif'],
         ];
     }
 

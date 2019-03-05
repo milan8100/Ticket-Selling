@@ -8,7 +8,7 @@ use common\models\ArtistSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\UploadedFile;
 /**
  * ArtistController implements the CRUD actions for Artist model.
  */
@@ -67,6 +67,15 @@ class ArtistController extends Controller
         $model = new Artist();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            $model->pic = UploadedFile::getInstance($model, 'pic');
+            $image_name = $model->name.rand(1,4000).'.'.$model->pic->extension; 
+            $image_path = 'uploads/artist/'.$image_name;
+            
+            $model->pic->saveAs($image_path);
+            $model->pic = $image_path;
+            $model->save();
+            
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

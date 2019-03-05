@@ -42,10 +42,11 @@ class Movies extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ticket_id', 'artist_id', 'category_id', 'language_id', 'location_id', 'mv_pic', 'mv_category', 'mv_name', 'mv_art_name', 'mv_ticket', 'mv_language', 'mv_location', 'is_active'], 'required'],
+            [['ticket_id', 'artist_id', 'category_id', 'language_id', 'location_id', 'mv_category', 'mv_name', 'mv_art_name', 'mv_ticket', 'mv_language', 'mv_location', 'is_active'], 'required'],
             [['ticket_id', 'artist_id', 'category_id', 'language_id', 'location_id'], 'integer'],
-            [['mv_pic', 'is_active'], 'string'],
+            [['is_active'], 'string'],
             [['create_at', 'update_at'], 'safe'],
+            [['mv_pic'],'file','extensions'=>'jpeg,jpg,png,gif'],
             [['mv_category', 'mv_location'], 'string', 'max' => 11],
             [['mv_name', 'mv_art_name', 'mv_ticket'], 'string', 'max' => 15],
             [['mv_language'], 'string', 'max' => 25],

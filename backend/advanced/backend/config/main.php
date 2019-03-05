@@ -21,6 +21,7 @@ return [
             'csrfParam' => '_csrf-backend',
             
         ],
+        
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

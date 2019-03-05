@@ -110,4 +110,5 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function validatePassword($password){
         return $this->password === $password;
     }
+   
 }

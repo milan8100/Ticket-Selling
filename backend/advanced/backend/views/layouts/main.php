@@ -109,6 +109,8 @@ AppAsset::register($this);
 		</div>
 	</div>
 	<!-- Header / End -->
+        </div>
+</div>
 
 </header>
 

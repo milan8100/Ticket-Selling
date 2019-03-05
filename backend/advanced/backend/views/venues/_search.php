@@ -111,7 +111,7 @@ foreach ($rows as $row) {
 }
 ?></a></li>                          
      
-                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/language/"><i class="sl sl-icon-note"></i> <?php
+                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/lang/"><i class="sl sl-icon-note"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -146,18 +146,7 @@ foreach ($rows as $row) {
                      
                 </ul>
 			
-		<ul data-submenu-title="Listings">
-                    <li><a><i class="sl sl-icon-layers"></i> Events Managment</a>
-			<ul>
-                            <li><a href="">Artist<span class="nav-tag green">6</span></a></li>
-                            <li><a href="">Movies<span class="nav-tag yellow">1</span></a></li>
-                            <li><a href="">Events<span class="nav-tag red">2</span></a></li>
-			</ul>	
-                    </li>
-                    <li><a href=""><i class="sl sl-icon-star"></i> Review</a></li>
-                    <li><a href=""><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-                    <li><a href=""><i class="sl sl-icon-plus"></i> Add Listing</a></li>
-                </ul>	
+		
                 <ul data-submenu-title="Account">
                     <li><a href=""><i class="sl sl-icon-user"></i> My Profile</a></li>
                    

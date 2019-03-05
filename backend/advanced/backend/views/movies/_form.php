@@ -11,7 +11,9 @@ use yii\widgets\ActiveForm;
 <div class="movies-form">
     
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']        
+        ]); ?>
 <div class="row">
 			<div class="col-lg-12">
 
@@ -40,7 +42,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'location_id')->textInput() ?>
 
-    <?= $form->field($model, 'mv_pic')->textInput() ?>
+    <?= $form->field($model, 'mv_pic')->fileInput() ?>
 
     <?= $form->field($model, 'mv_category')->textInput() ?>
 

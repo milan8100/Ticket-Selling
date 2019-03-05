@@ -2,6 +2,8 @@
       use common\models\Ticket;
       use common\models\TicketManagment;
       use common\models\Movies;
+      use yii\data\ActiveDataProvider;
+      use yii\db\Query;
       
  $this->title = 'Dashboard';     
 ?>
@@ -120,7 +122,7 @@ foreach ($rows as $row) {
 }
 ?></a></li>                          
                  
-                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/language/"><i class="sl sl-icon-note"></i> <?php
+                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/lang/"><i class="sl sl-icon-note"></i> <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -156,18 +158,7 @@ foreach ($rows as $row) {
                    
 		</ul>
 			
-		<ul data-submenu-title="Listings">
-                    <li><a><i class="sl sl-icon-layers"></i> Events Managment</a>
-			<ul>
-                            <li><a href="">Artist<span class="nav-tag green">6</span></a></li>
-                            <li><a href="">Movies<span class="nav-tag yellow">1</span></a></li>
-                            <li><a href="">Events<span class="nav-tag red">2</span></a></li>
-			</ul>	
-                    </li>
-                    <li><a href=""><i class="sl sl-icon-star"></i> Review</a></li>
-                    <li><a href=""><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-                    <li><a href=""><i class="sl sl-icon-plus"></i> Add Listing</a></li>
-                </ul>	
+		
                 <ul data-submenu-title="Account">
                     <li><a href=""><i class="sl sl-icon-user"></i> My Profile</a></li>
                    
@@ -196,90 +187,121 @@ foreach ($rows as $row) {
 		</div>
 
 		<!-- Notice -->
-		<div class="row">
-                    <div class="col-md-12">
-                            <div class="notification success closeable margin-bottom-30">
-				<p>Your listing <strong>Hotel Govendor</strong> has been approved!</p>
-                                    <a class="close" href="#"></a>
-                            </div>
-                    </div>
-		</div>
+		
 
 		<!-- Content -->
 		<div class="row">
                     <!-- Item -->
                     <div class="col-lg-3 col-md-6">
                         <div class="dashboard-stat color-1">
-                            <div class="dashboard-stat-content"><h4>6</h4> <span>Active Listings</span></div>
-                                   <div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
+                                    <div class="dashboard-stat-content"><h4>
+                                                              
+    <?php  
+    $rows = (new \yii\db\Query())
+    ->select(['id'])
+    ->from('user')
+    ->all();
+    foreach ($rows as $row) 
+    {
+        $id = $row['id'];
+    }
+    echo count($rows);
+    ?> 
+                                               
+                                </h4> <span>Total Users</span></div>
+                                   <div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
                         </div>
                     </div>
                     <!-- Item -->
                     <div class="col-lg-3 col-md-6">
                         <div class="dashboard-stat color-2">
-                            <div class="dashboard-stat-content"><h4>726</h4> <span>Total Views</span></div>
-                                <div class="dashboard-stat-icon"><i class="im im-icon-Line-Chart"></i></div>
+                                    <div class="dashboard-stat-content"><h4>
+    <?php  
+    $rows = (new \yii\db\Query())
+    ->select(['id'])
+    ->from('venues')
+    ->all();
+    foreach ($rows as $row) 
+    {
+        $id = $row['id'];
+    }
+    echo count($rows);
+    ?> 
+    
+                                            
+                                </h4> <span>Total Venues</span></div>
+                                <div class="dashboard-stat-icon"><i class="im im-icon-Location-2    "></i></div>
                         </div>
                     </div>
                     <!-- Item -->
 			<div class="col-lg-3 col-md-6">
 				<div class="dashboard-stat color-3">
-					<div class="dashboard-stat-content"><h4>95</h4> <span>Total Reviews</span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
+                                            <div class="dashboard-stat-content"><h4>
+    <?php  
+    $rows = (new \yii\db\Query())
+    ->select(['id'])
+    ->from('artist')
+    ->all();
+    foreach ($rows as $row) 
+    {
+        $id = $row['id'];
+    }
+    echo count($rows);
+    ?> 
+                                                    
+                                        </h4> <span>Total Artist</span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-User"></i></div>
 				</div>
 			</div>
 
 			<!-- Item -->
 			<div class="col-lg-3 col-md-6">
 				<div class="dashboard-stat color-4">
-					<div class="dashboard-stat-content"><h4>126</h4> <span>Times Bookmarked</span></div>
-					<div class="dashboard-stat-icon"><i class="im im-icon-Heart"></i></div>
+                                    <div class="dashboard-stat-content"><h4>
+    <?php  
+    $rows = (new \yii\db\Query())
+    ->select(['id'])
+    ->from('movies')
+    ->all();
+    foreach ($rows as $row) 
+    {
+        $id = $row['id'];
+    }
+    echo count($rows);
+    ?> 
+            
+                                            
+                                        </h4> <span> Total Movies</span></div>
+					<div class="dashboard-stat-icon"><i class="im im-icon-Movie"></i></div>
 				</div>
 			</div>
 		</div>
-
-
+                  
 		<div class="row">
 			
 			<!-- Recent Activity -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box with-icons margin-top-20">
-					<h4>Recent Activities</h4>
+					<h4>Important Shortcuts</h4>
 					<ul>
-						<li>
-							<i class="list-box-icon sl sl-icon-layers"></i> Your listing <strong><a href="#">Hotel Govendor</a></strong> has been approved!
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
+                                                    <li>
+                                                            <a href="<?= Yii::$app->request->baseUrl; ?>/users/create/" ><i class="list-box-icon sl sl-icon-user"></i> Add New User 
+                                                            </a>
+                                                    </li>
 
-						<li>
-							<i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div class="numerical-rating" data-rating="5.0"></div> on <strong><a href="#">Burger House</a></strong>
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
-
-						<li>
-							<i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a href="#">Burger House</a></strong> listing!
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
-
-						<li>
-							<i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div class="numerical-rating" data-rating="3.0"></div> on <strong><a href="#">Airport</a></strong>
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
-
-						<li>
-							<i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a href="#">Burger House</a></strong> listing!
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
-
-						<li>
-							<i class="list-box-icon sl sl-icon-star"></i> John Doe left a review <div class="numerical-rating" data-rating="4.0"></div> on <strong><a href="#">Burger House</a></strong>
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
-
-						<li>
-							<i class="list-box-icon sl sl-icon-star"></i> Jack Perry left a review <div class="numerical-rating" data-rating="2.5"></div> on <strong><a href="#">Tom's Restaurant</a></strong>
-							<a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-						</li>
+                                                    <li>
+							<a href="<?= Yii::$app->request->baseUrl; ?>/movies/create/" ><i class="list-box-icon sl sl-icon-film"></i> Add New Movies
+                                                        </a>
+                                                </li>
+                                                <li>
+							<a href="<?= Yii::$app->request->baseUrl; ?>/ticketmanagment/create/" ><i class="list-box-icon fa fa-calendar-check-o"></i> Add New Tickets
+                                                        </a>
+                                                </li>
+                                                <li>
+							<a href="<?= Yii::$app->request->baseUrl; ?>/venues/create/" ><i class="list-box-icon sl sl-icon-location"></i> Add New Venues
+                                                        </a>
+                                                </li>
+        
 					</ul>
 				</div>
 			</div>
@@ -287,7 +309,7 @@ foreach ($rows as $row) {
 			<!-- Invoices -->
 			<div class="col-lg-6 col-md-12">
 				<div class="dashboard-list-box invoices with-icons margin-top-20">
-					<h4>Invoices</h4>
+					<h4>List of Users</h4>
 					<ul>
 						
 						<li><i class="list-box-icon sl sl-icon-doc"></i>

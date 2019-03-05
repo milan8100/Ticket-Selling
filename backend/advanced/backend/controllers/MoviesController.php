@@ -8,7 +8,7 @@ use common\models\MoviesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\UploadedFile;
 /**
  * MoviesController implements the CRUD actions for Movies model.
  */
@@ -67,7 +67,18 @@ class MoviesController extends Controller
         $model = new Movies();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+             //get the instance of the up[load
+            
+            
+            $model->mv_pic = UploadedFile::getInstance($model, 'mv_pic');
+            $image_name = $model->mv_name.rand(1,4000).'.'.$model->mv_pic->extension; 
+            $image_path = 'uploads/movies/'.$image_name;
+            $model->save();
+            $model->mv_pic->saveAs($image_path);
+            $model->mv_pic = $image_path;
+            
+            
+            return $this->redirect(['view', 'id' => $model->id]) ;
         }
 
         return $this->render('create', [
