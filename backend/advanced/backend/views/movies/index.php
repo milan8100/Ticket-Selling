@@ -208,17 +208,26 @@ foreach ($rows as $row) {
         'filterModel' => $searchModel, 
         'columns' => [
          
-            'id',
+            //'id',
             //'ticket_id',
             //'artist_id',
             //'category_id',
             //'language_id',
             //'location_id',
-            //'mv_pic',
+            [
+                 'label' => 'mv_pic',
+
+                'format' => ['image',['width'=>'50']], 
+
+                'value'=>function($model){
+
+                    return('uploads/movies/'.$model->mv_pic);
+                },
+            ],
             'mv_category',
             'mv_name',
             'mv_art_name',
-            'mv_ticket',
+            //'mv_ticket',
             'mv_language',
             'mv_location',
             'is_active',

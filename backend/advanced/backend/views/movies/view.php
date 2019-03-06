@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
     ->from('menus')
-        
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
@@ -40,7 +39,6 @@ foreach ($rows as $row) {
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
     ->from('menus')
-        
     ->all();
 foreach ($rows as $row) {
     $menuname = $row['menuname'];
@@ -216,7 +214,16 @@ foreach ($rows as $row) {
             'category_id',
             'language_id',
             'location_id',
-            'mv_pic',
+             [
+                 'label' => 'mv_pic',
+
+                'format' => ['image',['width'=>'75']], 
+
+                'value'=>function($model){
+
+                return('/uploads/movies/'.$model->mv_pic);
+            },
+            ],
             'mv_category',
             'mv_name',
             'mv_art_name',

@@ -197,16 +197,14 @@ foreach ($rows as $row) {
                                     <div class="dashboard-stat-content"><h4>
                                                               
     <?php  
-    $rows = (new \yii\db\Query())
-    ->select(['id'])
-    ->from('user')
-    ->all();
-    foreach ($rows as $row) 
-    {
-        $id = $row['id'];
-    }
-    echo count($rows);
-    ?> 
+                      
+$count = (new \yii\db\Query())
+->select('count(*)')
+->from('user')
+->scalar();
+echo $count;
+                  ?>
+    
                                                
                                 </h4> <span>Total Users</span></div>
                                    <div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
@@ -216,17 +214,15 @@ foreach ($rows as $row) {
                     <div class="col-lg-3 col-md-6">
                         <div class="dashboard-stat color-2">
                                     <div class="dashboard-stat-content"><h4>
-    <?php  
-    $rows = (new \yii\db\Query())
-    ->select(['id'])
-    ->from('venues')
-    ->all();
-    foreach ($rows as $row) 
-    {
-        $id = $row['id'];
-    }
-    echo count($rows);
-    ?> 
+      
+                     <?php
+$count = (new \yii\db\Query())
+->select('count(*)')
+->from('venues')
+->scalar();
+echo $count;
+                  ?>
+    
     
                                             
                                 </h4> <span>Total Venues</span></div>
@@ -237,17 +233,15 @@ foreach ($rows as $row) {
 			<div class="col-lg-3 col-md-6">
 				<div class="dashboard-stat color-3">
                                             <div class="dashboard-stat-content"><h4>
-    <?php  
-    $rows = (new \yii\db\Query())
-    ->select(['id'])
-    ->from('artist')
-    ->all();
-    foreach ($rows as $row) 
-    {
-        $id = $row['id'];
-    }
-    echo count($rows);
-    ?> 
+      
+                      <?php
+$count = (new \yii\db\Query())
+->select('count(*)')
+->from('artist')
+->scalar();
+echo $count;
+                  ?>
+    
                                                     
                                         </h4> <span>Total Artist</span></div>
 					<div class="dashboard-stat-icon"><i class="im im-icon-User"></i></div>
@@ -258,17 +252,15 @@ foreach ($rows as $row) {
 			<div class="col-lg-3 col-md-6">
 				<div class="dashboard-stat color-4">
                                     <div class="dashboard-stat-content"><h4>
-    <?php  
-    $rows = (new \yii\db\Query())
-    ->select(['id'])
-    ->from('movies')
-    ->all();
-    foreach ($rows as $row) 
-    {
-        $id = $row['id'];
-    }
-    echo count($rows);
-    ?> 
+      
+                      <?php
+$count = (new \yii\db\Query())
+->select('count(*)')
+->from('movies')
+->scalar();
+echo $count;
+                  ?>
+    
             
                                             
                                         </h4> <span> Total Movies</span></div>
@@ -276,7 +268,7 @@ foreach ($rows as $row) {
 				</div>
 			</div>
 		</div>
-                  
+
 		<div class="row">
 			
 			<!-- Recent Activity -->
@@ -307,63 +299,46 @@ foreach ($rows as $row) {
 			</div>
 			
 			<!-- Invoices -->
-			<div class="col-lg-6 col-md-12">
-				<div class="dashboard-list-box invoices with-icons margin-top-20">
-					<h4>List of Users</h4>
-					<ul>
-						
-						<li><i class="list-box-icon sl sl-icon-doc"></i>
-							<strong>Professional Plan</strong>
-							<ul>
-								<li class="unpaid">Unpaid</li>
-								<li>Order: #00124</li>
-								<li>Date: 20/07/2017</li>
-							</ul>
-							<div class="buttons-to-right">
-								<a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-							</div>
-						</li>
-						
-						<li><i class="list-box-icon sl sl-icon-doc"></i>
-							<strong>Extended Plan</strong>
-							<ul>
-								<li class="paid">Paid</li>
-								<li>Order: #00108</li>
-								<li>Date: 14/07/2017</li>
-							</ul>
-							<div class="buttons-to-right">
-								<a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-							</div>
-						</li>
-
-						<li><i class="list-box-icon sl sl-icon-doc"></i>
-							<strong>Extended Plan</strong>
-							<ul>
-								<li class="paid">Paid</li>
-								<li>Order: #00097</li>
-								<li>Date: 10/07/2017</li>
-							</ul>
-							<div class="buttons-to-right">
-								<a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-							</div>
-						</li>
-						
-						<li><i class="list-box-icon sl sl-icon-doc"></i>
-							<strong>Basic Plan</strong>
-							<ul>
-								<li class="paid">Paid</li>
-								<li>Order: #00091</li>
-								<li>Date: 30/06/2017</li>
-							</ul>
-							<div class="buttons-to-right">
-								<a href="dashboard-invoice.html" class="button gray">View Invoice</a>
-							</div>
-						</li>
-
-					</ul>
-				</div>
-			</div>
-
+			
+<div class="col-lg-3 col-md-6">
+                        <div class="dashboard-stat color-2">
+                                    <div class="dashboard-stat-content"><h4>
+                                                              
+    <?php  
+                      
+$count = (new \yii\db\Query())
+->select('count(*)')
+->from('lang')
+->scalar();
+echo $count;
+                  ?>
+    
+                                               
+                                </h4> <span>Total Languages</span></div>
+                                   <div class="dashboard-stat-icon"><i class="sl sl-icon-note"></i></div>
+                        </div>
+                    </div>
+                        			
+<div class="col-lg-3 col-md-6">
+                        <div class="dashboard-stat color-3">
+                                    <div class="dashboard-stat-content"><h4>
+                                                              
+    <?php  
+                      
+$count = (new \yii\db\Query())
+->select('count(*)')
+->from('category')
+->scalar();
+echo $count;
+                  ?>
+    
+                                               
+                                </h4> <span>Total Movies Categories</span></div>
+                                   <div class="dashboard-stat-icon"><i class="im im-icon-Film-Strip"></i></div>
+                        </div>
+                    </div>
+    
+                        
 
 			<!-- Copyrights -->
 			<div class="col-md-12">
@@ -387,3 +362,4 @@ foreach ($rows as $row) {
 <script type="text/javascript" src="scripts/tooltips.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>-->
 
+    

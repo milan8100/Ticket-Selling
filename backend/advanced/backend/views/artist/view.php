@@ -213,7 +213,7 @@ foreach ($rows as $row) {
             'location_id',
             'movie_id',
             'name',
-            'pic:image',
+            'pic',
             'is_active',
             'create_at',
             'update_at',

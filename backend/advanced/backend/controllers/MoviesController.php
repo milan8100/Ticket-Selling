@@ -73,7 +73,7 @@ class MoviesController extends Controller
             $model->mv_pic = UploadedFile::getInstance($model, 'mv_pic');
             $image_name = $model->mv_name.rand(1,4000).'.'.$model->mv_pic->extension; 
             $image_path = 'uploads/movies/'.$image_name;
-            $model->save();
+            $model->save(); 
             $model->mv_pic->saveAs($image_path);
             $model->mv_pic = $image_path;
             

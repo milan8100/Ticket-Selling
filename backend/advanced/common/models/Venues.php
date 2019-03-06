@@ -34,12 +34,12 @@ class Venues extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['movie_id', 'venues_id', 'location_id', 'name', 'venue_pic', 'location', 'is_active'], 'required'],
+            [['movie_id', 'venues_id', 'location_id', 'name', 'location', 'is_active'], 'required'],
             [['movie_id', 'venues_id', 'location_id'], 'integer'],
             [['is_active'], 'string'],
             [['create_at', 'update_at'], 'safe'],
             [['name', 'location'], 'string', 'max' => 25],
-            [['venue_pic'], 'string', 'max' => 255],
+            
         ];
     }
 
@@ -54,7 +54,7 @@ class Venues extends \yii\db\ActiveRecord
             'venues_id' => 'Venues ID',
             'location_id' => 'Location ID',
             'name' => 'Name',
-            'venue_pic' => 'Venue Pic',
+            
             'location' => 'Location',
             'is_active' => 'Is Active',
             'create_at' => 'Create At',

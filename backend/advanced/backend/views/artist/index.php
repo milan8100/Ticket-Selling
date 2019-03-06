@@ -19,8 +19,7 @@ $this->title = 'Artist Management';
             <div class="dashboard-nav-inner">
                 <ul data-submenu-title="Main">
                     <li><a href="<?= Yii::$app->request->baseUrl; ?>/site/"><i class="sl sl-icon-settings"></i>  
-                    
-<?php
+ <?php
 
 $rows = (new \yii\db\Query())
     ->select(['menuname'])
@@ -217,7 +216,16 @@ foreach ($rows as $row) {
             //'location_id',
             //'movie_id',
             'name',
-            'pic:image',
+            [
+                 'label' => 'pic',
+
+                'format' => ['image',['width'=>'50']], 
+
+                'value'=>function($model){
+
+                    return('uploads/artist/'.$model->pic);
+                },
+            ],
             'is_active',
             'create_at',
             'update_at',
